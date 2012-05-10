@@ -1,0 +1,11 @@
+Package: tldutils
+Version: 0.1.0
+Title: Various utility functions
+Description: Various utility functions written and used by Trevor L. Davis
+License: GPL (>= 2)
+Suggests:
+    knitr
+Author: Trevor L. Davis
+Maintainer: Trevor L. Davis <trevor.l.davis@stanford.edu>
+Collate:
+    'utilities.R'

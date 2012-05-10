@@ -1,0 +1,8 @@
+export(compute_beta_stats)
+export(compute_sales_tax)
+export(eval_string)
+export(exit)
+export(knit_and_compile)
+export(lg)
+export(load_packages_robustly)
+export(sq_matrix)
