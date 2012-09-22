@@ -6,7 +6,7 @@
 #' @param tax_rate The ad-valorem sales tax rate
 #' @return Returns a list with pre_tax, sales_tax, post_tax, and tax_rate.
 #' @export 
-compute_sales_tax <- function(pre_tax, tax_rate=0.0825) {
+compute_sales_tax <- function(pre_tax, tax_rate=0.08375) {
     sales_tax <- pre_tax * tax_rate
     post_tax <- pre_tax + sales_tax
     return(list(pre_tax=pre_tax, sales_tax=sales_tax, post_tax=post_tax, 

@@ -2,7 +2,7 @@
 \alias{compute_sales_tax}
 \title{Computes sales tax}
 \usage{
-  compute_sales_tax(pre_tax, tax_rate = 0.0825)
+  compute_sales_tax(pre_tax, tax_rate = 0.08375)
 }
 \arguments{
   \item{pre_tax}{The pre-tax price}
