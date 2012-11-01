@@ -31,6 +31,22 @@ load_packages_robustly <- function(packages, repos=getOption("repos")) {
     }
     return(invisible(NULL))
 }
+
+#' Takes out all the numbers in a string and converts to a number
+#'
+#' \code{to_string} extracts the numbers in a character vector and 
+#' returns the extracted numbers as a numeric vector.
+#'
+#' @param strings Character vector
+#' @return Returns a vector of class "numeric".
+#' @export
+#' @examples
+#' strings <- c("FO23_43", "F10.4", "what3,00.", "what3..0..")
+#' to_numeric(strings)
+to_numeric <- function(strings) {
+    strings <- gsub("[^[:digit:]]*([[:digit:]]*\\.{0,1}[[:digit:]]+)[^[:digit:]]*", "\\1", strings)
+    base::as.numeric(strings)
+}
     
 #' Takes a vector and converts it into a square matrix
 #'
