@@ -39,14 +39,17 @@ load_packages_robustly <- function(packages, repos=getOption("repos")) {
 #' @param directory Character vector of directories to create
 #' @param parents If \code{TRUE} (the default) create parent directories if they do not exist
 #' @param mode mode to be used on Unix-alikes
-#' @return Returns \code{invisible(NULL)}, as a side effect creates directories.
+#' @return Returns invisibly a logical vector indicating if the operation succeeded for each directory attempted,
+#'      as a side effect creates directories.
 #' @seealso \code{\link[base]{dir.create}}
 #' @export
 mkdir <- function(directory, parents=TRUE, mode="0777") {
-    for(dir_ in directory) {
-        base::dir.create(dir_, showWarnings=FALSE, recursive=parents, mode=mode) 
+    exit_status <- vector("logical", length=length(directory))
+    for(ii in seq(along=directory)) {
+        exit_status[ii] <- base::dir.create(directory[ii], showWarnings=FALSE,
+                                     recursive=parents, mode=mode) 
     }
-    invisible(NULL)
+    invisible(exit_status)
 }
 
 #' Creates a csv file (with different defaults to \code{utils::write.csv})
