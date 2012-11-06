@@ -32,6 +32,40 @@ load_packages_robustly <- function(packages, repos=getOption("repos")) {
     return(invisible(NULL))
 }
 
+#' Creates directories (suppressing warnings and creates parents by default)
+
+#' \code{mkdir} Takes a character vector of directories and creates them.  
+#'
+#' @param directory Character vector of directories to create
+#' @param parents If \code{TRUE} (the default) create parent directories if they do not exist
+#' @param mode mode to be used on Unix-alikes
+#' @return Returns \code{invisible(NULL)}, as a side effect creates directories.
+#' @seealso \code{\link[base]{dir.create}}
+#' @export
+mkdir <- function(directory, parents=TRUE, mode="0777") {
+    for(dir_ in directory) {
+        base::dir.create(dir_, showWarnings=FALSE, recursive=parents, mode=mode) 
+    }
+    invisible(NULL)
+}
+
+#' Creates a csv file (with different defaults to \code{utils::write.csv})
+
+#' \code{write_csv} creates csv files with different defaults to \code{write.csv}, in particular 
+#'  by default we suppress row names and fill missing values with "" instead of "\code{NA}"
+#'
+#' @param x the object to be written passed to \code{write.csv}
+#' @param file passed to write.csv, use \code{file=gzfile(filename)} to write a gzip compressed file
+#' @param na String to use for missing values passed to \code{write.csv}
+#' @param row.names Passed to \code{write.csv}, determines whether to write row names or what they should be, passed to \code{write.csv}
+#' @param ... Other arguments passed to \code{write.csv}
+#' @return Returns \code{invisible(NULL)}, as a side effects creates a csv file.
+#' @seealso \code{\link[utils]{write.csv}}
+write_csv <- function(x, file, na="", row.names=FALSE, ...) {
+    utils::write.csv(x, file, na=na, row.names=row.names, ...)
+    invisible(NULL)
+}
+
 #' Takes out all the numbers in a string and converts to a number
 #'
 #' \code{to_string} extracts the numbers in a character vector and 
