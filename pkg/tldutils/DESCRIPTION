@@ -11,4 +11,3 @@ Author: Trevor L. Davis
 Maintainer: Trevor L. Davis <trevor.l.davis@stanford.edu>
 Collate:
     'utilities.R'
-    'ggplot2.zoo.R'

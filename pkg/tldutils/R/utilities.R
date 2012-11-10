@@ -170,33 +170,3 @@ lg <- function() { base::ls(all.names=TRUE, pos=1) }
 #' @rdname commands
 #' @export
 exit <- function() { quit("no") }
-
-# #' print_foobar <- "print('foobar')"
-# #' class(print_foobar) <- "command"
-# #' print_foobar
-# #' square_x <- "x <- x^2"
-# #' class(square_x) <- "command"
-# #' x <- 2
-# #' square_x
-# # exit <- "q('no')"
-# # class(exit) <- "command"
-# # #' @rdname commands
-# # #' @export
-# # lg <- "print(base::ls(all.names=TRUE, pos=1))"
-# # class(lg) <- "command"
-# # #' @rdname commands
-# # #' @export
-# # pwd <- "print(getwd())"
-# # class(pwd) <- "command"
-# # #' @rdname commands
-# # #' @export
-# # weave <- "knit_and_compile()"
-# # class(weave) <- "command"
-# #' @rdname commands
-# #' @export
-# #' @param x An object of class "command" to execute
-# #' @param ... Unused, for consistency with S3 print generic
-# #' @return Returns invisible(NULL), side effect executes command
-# #' @method print command
-# #' @format A character vector of legitimate R code to execute
-# # print.command <- function(x, ...) { eval.parent(parse(text=x), 1) }
