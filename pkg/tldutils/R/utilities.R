@@ -25,7 +25,7 @@ compute_sales_tax <- function(pre_tax, tax_rate=0.08375) {
 load_packages_robustly <- function(packages, repos=getOption("repos")) {
     for(package in packages) {
         if(!require(package, character.only=TRUE)) {
-            install.packages(package, repos=repos)
+            utils::install.packages(package, repos=repos)
             library(package, character.only=TRUE)
         }
     }
