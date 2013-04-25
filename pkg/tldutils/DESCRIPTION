@@ -1,10 +1,11 @@
 Package: tldutils
-Version: 0.2.0
+Version: 0.3.0
 Title: Various utility functions
 Description: Various utility functions written and used by Trevor L. Davis
 License: GPL (>= 2)
-Enhances: zoo, ggplot2
+Enhances: foreign
 Suggests:
+    foreign,
     knitr,
     reshape2
 Author: Trevor L. Davis

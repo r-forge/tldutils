@@ -1,0 +1,5 @@
+tldutils 0.3.0
+==============
+* Remove Enhances zoo and ggplot2
+* Add Enhances foreign
+* Add read.dta.gz and write.dta.gz

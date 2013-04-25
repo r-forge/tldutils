@@ -157,6 +157,44 @@ knit_and_compile <- function(file=NULL, pdf=TRUE, clean=TRUE, ...) {
     tools::texi2dvi(file_tex, pdf=pdf, clean=clean, ...)
 }
 
+#' Functions to read and write gzip compressed Stata files
+#'
+#' \code{read.dta.gz} and \code{write.dta.gz} allow one to
+#' read and write gzip compressed stata files
+#'
+#' @param dataframe Dataframe
+#' @param file String giving filename
+#' @param ... Passed onto either \code{write.dta} or \code{read.dta}
+#' @rdname stata
+#' @export
+#' @examples
+#' df <- data.frame(x=rnorm(10), y=runif(10))
+#' target <- tempfile("foo.dta.gz")
+#' write.dta.gz(df, target)
+#' df2 <- read.dta.gz(target)
+#' all.equal(df, df2)
+#' unlink(target)
+write.dta.gz <- function(dataframe, file, ...) {
+    file.dta.gz <- file.path(tempdir(), basename(file))
+    file.dta <- sub(".gz$", "", file.dta.gz)
+    foreign::write.dta(dataframe, file.dta, ...)
+    system(paste("gzip", file.dta))
+    file.copy(file.dta.gz, file)
+    unlink(file.dta.gz)
+    invisible(NULL)
+}
+#' @rdname stata
+#' @export
+read.dta.gz <- function(file, ...) {
+    file.dta.gz <- file.path(tempdir(), basename(file))
+    file.dta <- sub(".gz$", "", file.dta.gz)
+    file.copy(file, file.dta.gz)
+    system(paste("gunzip", file.dta.gz))
+    dataframe <- foreign::read.dta(file.dta, ...)
+    unlink(file.dta)
+    return(dataframe)
+}
+
 #' Various helpful commands
 #'
 #' A few random helpful commands:
